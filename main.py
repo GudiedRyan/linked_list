@@ -7,10 +7,53 @@ class LinkedList:
     def __init__(self):
         self.head = None
 
-    def add(self, value):
+    def add_head(self, value):
         new_head = Node(value)
         new_head.next = self.head
         self.head = new_head
+
+    def add_after(self, prev_node, value):
+        if prev_node is None:
+            print("prev node not in list")
+            return
+        added_node = Node(value)
+        added_node.next = prev_node.next
+        prev_node.next = added_node
+
+    def add_to_end(self, value):
+        new_node = Node(value)
+        if self.head == None:
+            self.head = new_node
+        else:
+            last = self.head
+            while last.next != None:
+                last = last.next
+            last.next = new_node
+
+    def search(self, value):
+        if self.head == None:
+            return False
+        elif self.head.value == value:
+            return self.head.value
+        current_node = self.head
+        while current_node.value != value:
+            if current_node.next == None:
+                return False
+            current_node = current_node.next
+        return True
+
+    def delete(self, value):
+        if self.search(value):
+            current_node = self.head
+            if self.head.value == value:
+                pass
+            while current_node.value != value:
+                current_node = current_node.next
+            
+        print("Value not in list")
+        return False
+
+        
 
 
 
