@@ -45,15 +45,29 @@ class LinkedList:
     def delete(self, value):
         if self.search(value):
             current_node = self.head
+            prev_node = None
             if self.head.value == value:
-                pass
+                temp_head = self.head.next
+                self.head = None
+                self.head = temp_head
+                return
             while current_node.value != value:
+                prev_node = current_node
                 current_node = current_node.next
-            
+            prev_node.next = current_node.next
+            print(f"Node {current_node.value} has been deleted")
+            current_node = None
+            return     
         print("Value not in list")
         return False
 
-        
-
-
-
+    def print_nodes(self):
+        if self.head == None:
+            print("Linked list has no nodes")
+            return True
+        current_node = self.head
+        while current_node.next != None:
+            print(current_node.value)
+            current_node = current_node.next
+        print(current_node.value)
+        return current_node.value
