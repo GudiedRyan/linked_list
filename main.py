@@ -71,3 +71,9 @@ class LinkedList:
             current_node = current_node.next
         print(current_node.value)
         return current_node.value
+
+    def update_node(self, node: Node, data):
+        if node.value == None:
+            return
+        node.value = data
+        return node.value
