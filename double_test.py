@@ -42,3 +42,11 @@ def test_add_to_end():
     dllist.add_to_end(34)
     dllist.add_to_end(67)
     assert dllist.find_node(67).previous.value == 34
+
+def test_delete():
+    dllist = DoublyLinkedList()
+    dllist.add_to_end(34)
+    dllist.add_to_end(67)
+    dllist.add_to_end(76)
+    dllist.delete_node(67)
+    assert dllist.head.next.value == 76 and dllist.head.next.previous.value == 34
