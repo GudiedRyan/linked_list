@@ -49,3 +49,27 @@ class DoublyLinkedList:
                 return False
             current_node = current_node.next
         return current_node.value
+
+    def delete_node(self,value):
+        if self.head == None:
+            return False
+        elif self.head.value == value:
+            if self.head.next == None:
+                self.head = None
+                return True
+            self.head.next.previous = None
+            self.head.next = self.head
+            return True
+        current_node = self.head
+        while current_node.value != value:
+            if current_node.next == None:
+                return False
+            current_node = current_node.next
+        if current_node.next == None:
+            current_node.previous.next = None
+            current_node = None
+            return True
+        current_node.previous.next = current_node.next
+        current_node.next.previous = current_node.previous
+        current_node = None
+        return True
