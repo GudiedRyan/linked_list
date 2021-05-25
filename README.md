@@ -10,6 +10,6 @@ The available methods for the doubly linked list are:
 2. Add to the end of the list
 3. Search the list for a node
 4. Delete a node
-5. Insert a node after another specified node. If that node turns out to be the tail, it will add it to the tail. Similar rule applies to the head.
+5. Insert a node after another specified node. If that node turns out to be the tail, it will add it to the tail. Since a previous node is a required input, this method cannot be used to add a new head.
 
 To run the tests, first make sure you're in the pipenv (pipenv shell in the terminal) then just type pytest (appropriate test file).
