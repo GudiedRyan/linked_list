@@ -73,3 +73,22 @@ class DoublyLinkedList:
         current_node.next.previous = current_node.previous
         current_node = None
         return True
+
+    def add_after(self, prev: Node, value):
+        if prev == self.head:
+            self.insert(prev_node=self.head, value=value)
+            return True
+        current = self.head
+        while current != prev:
+            current = current.next
+        if current.next == None:
+            self.add_to_end(value)
+        else:
+            self.insert(prev_node=current, value=value)
+
+    def insert(self, prev_node: Node, value):
+        new_node = Node(value)
+        new_node.next = prev_node.next
+        prev_node.next.previous = new_node
+        prev_node.next = new_node
+        new_node.previous = prev_node

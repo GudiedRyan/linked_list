@@ -50,3 +50,19 @@ def test_delete():
     dllist.add_to_end(76)
     dllist.delete_node(67)
     assert dllist.head.next.value == 76 and dllist.head.next.previous.value == 34
+
+def test_insert_after():
+    dllist = DoublyLinkedList()
+    dllist.add_head(1)
+    dllist.add_to_end(123)
+    dllist.add_to_end(500)
+    dllist.add_after(dllist.head, 20)
+    assert dllist.head.next.value == 20 and dllist.head.next.previous.value == 1
+
+def test_insert_after_2():
+    dllist = DoublyLinkedList()
+    dllist.add_head(1)
+    dllist.add_to_end(123)
+    dllist.add_to_end(500)
+    dllist.add_after(dllist.head.next.next, 20)
+    assert dllist.head.next.next.next.value == 20
